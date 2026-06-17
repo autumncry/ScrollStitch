@@ -1,0 +1,79 @@
+name: ScrollStitch
+
+options:
+  minimumXcodeGenVersion: 2.43.0
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+    DEVELOPMENT_TEAM: 49S7RK7S28
+    CODE_SIGN_STYLE: Automatic
+    CLANG_ENABLE_MODULES: YES
+
+targets:
+  ScrollStitchCore:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Sources/ScrollStitchCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ronnycao.ScrollStitchCore
+        PRODUCT_NAME: ScrollStitchCore
+        GENERATE_INFOPLIST_FILE: YES
+
+  ScrollStitch:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources/ScrollStitchApp
+    resources:
+      - path: Resources
+    dependencies:
+      - target: ScrollStitchCore
+    info:
+      path: Sources/ScrollStitchApp/Info.plist
+      properties:
+        CFBundleDisplayName: ScrollStitch
+        CFBundleShortVersionString: "0.1.0"
+        CFBundleVersion: "1"
+        LSRequiresIPhoneOS: true
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UILaunchStoryboardName: LaunchScreen
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        NSPhotoLibraryUsageDescription: ScrollStitch imports screenshots and screen recordings that you select so it can build long screenshots locally.
+        NSPhotoLibraryAddUsageDescription: ScrollStitch saves stitched long screenshots back to your photo library when you ask it to.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ronnycao.ScrollStitch
+        PRODUCT_NAME: ScrollStitch
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: 1
+
+  ScrollStitchCoreTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests/ScrollStitchCoreTests
+    dependencies:
+      - target: ScrollStitchCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ronnycao.ScrollStitchCoreTests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  ScrollStitch:
+    build:
+      targets:
+        ScrollStitch: all
+        ScrollStitchCoreTests: [test]
+    test:
+      targets:
+        - ScrollStitchCoreTests
+      gatherCoverageData: true
