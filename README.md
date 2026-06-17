@@ -56,7 +56,7 @@ xcodebuild -project ScrollStitch.xcodeproj -scheme ScrollStitch -destination 'pl
 4. Keep the bundle identifier unique, for example `com.yourname.ScrollStitch`.
 5. Connect your iPhone, choose it as the run destination, then press Run.
 
-The checked-in project configuration uses development team `49S7RK7S28`, matching the local development certificate that was available when this project was created. Change it in Xcode or `project.yml` if needed.
+The checked-in project configuration uses development team `5SR2B93233`, matching the local Apple Development certificate that was available when this project was created. Change it in Xcode or `project.yml` if needed.
 
 ## Demo Media
 
