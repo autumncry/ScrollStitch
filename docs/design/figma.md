@@ -4,10 +4,10 @@ Editable design file:
 
 https://www.figma.com/design/73mHry8hcN6S9dqK79x7yP
 
-The file contains three iPhone-sized frames:
+The original file contains three iPhone-sized frames:
 
 - `01 Screenshots Import`
 - `02 Recording Import`
 - `03 Result Preview`
 
-The design follows the SwiftUI implementation: native navigation title, segmented source switcher, grouped import and preview panels, and bottom action bar.
+The current app now leads with a native browser capture tab: compact URL controls, full-height `WKWebView`, material status strip, and bottom capture/save/share action bar. The original import screens remain as the fallback `Imports` tab.

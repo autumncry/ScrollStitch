@@ -2,7 +2,26 @@ import PhotosUI
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var webSession = WebCaptureSession()
     @StateObject private var workspace = StitchWorkspace()
+
+    var body: some View {
+        TabView {
+            WebCaptureView(session: webSession)
+                .tabItem {
+                    Label("Capture", systemImage: "safari")
+                }
+
+            MediaStitchView(workspace: workspace)
+                .tabItem {
+                    Label("Imports", systemImage: "photo.stack")
+                }
+        }
+    }
+}
+
+private struct MediaStitchView: View {
+    @ObservedObject var workspace: StitchWorkspace
     @State private var imageItems: [PhotosPickerItem] = []
     @State private var videoItem: PhotosPickerItem?
     @State private var isShowingSettings = false
